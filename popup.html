@@ -9,17 +9,11 @@
 
       <table>
         <tr>
-          <td style="width:100px; text-align:center">
-            <button type="button" class="btn btn-primary" v-on:click="login('LV0248')">LV0248</button>
-          </td>
-          <td style="width:100px; text-align:center">
-            <button type="submit" class="btn btn-primary" v-on:click="login('IQ6382')">IQ6382</button>
-          </td>
-          <td style="width:100px; text-align:center">
-            <button type="submit" class="btn btn-primary" v-on:click="login('NH6133')">NH6133</button>
-          </td>
-          <td style="width:100px; text-align:center">
-            <button type="submit" class="btn btn-primary" v-on:click="login('AJ8534')">AJ8534</button>
+          <td style="width:100px; text-align:center"
+              v-for="userId in userIds"
+              :key="userId"
+              :value="userId" >
+            <button type="button" class="btn btn-primary" v-on:click="login(userId)">{{ userId }}</button>
           </td>
         </tr>
       </table>

@@ -6,6 +6,7 @@
   "permissions": [
     "identity",
     "cookies",
+    "storage",
     "*://kite.zerodha.com//*",
     "*://console.zerodha.com//*"
   ],
@@ -15,7 +16,7 @@
       "https://www.googleapis.com/auth/userinfo.email"
     ]
   },
-  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net/npm/vue/dist/vue.js; object-src 'self'; connect-src 'self' https://zerodha.zero65.in/api/session;",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net/npm/vue/dist/vue.js; object-src 'self'; connect-src 'self' https://invest.zero65.in/api/user/zerodha-ids https://zerodha.zero65.in/api/session;",
   "browser_action": {
     "default_icon": "money-32.png",
     "default_popup": "popup.html"

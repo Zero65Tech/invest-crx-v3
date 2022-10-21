@@ -5,7 +5,7 @@ function psHttpGet(url) {
       if(!token)
         throw new Error('Failed to fetch auth token !');
 
-	    var xhttp = new XMLHttpRequest();
+	    let xhttp = new XMLHttpRequest();
 	    xhttp.onreadystatechange = function() {
 
 	      if(this.readyState != XMLHttpRequest.DONE)
@@ -35,7 +35,7 @@ function psGetCookie(url, name) {
 }
 
 function psSetCookie(details) {
-  console.log('Setting cookie ...', details);
+  console.log('Setting cookie ', details);
   return new Promise((resolve, reject) => {
     chrome.cookies.set(details, (cookie) => {
       resolve(cookie);

@@ -1,8 +1,11 @@
-const backend = 'https://zerodha.zero65.in/api';
 var userId = 'LV0248';
 var cookies = { timestamp: 0 };
 
 
+(async () => {
+  let userIds = await psHttpGet(`https://invest.zero65.in/api/user/zerodha-ids`);
+  chrome.storage.sync.set({ 'userIds': userIds });
+})();
 
 chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
 
@@ -14,7 +17,7 @@ chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
     userId = data;
 
 
-  cookies = await psHttpGet(`${ backend }/session?userId=${ userId }&timestamp=${ cookies.timestamp }`);
+  cookies = await psHttpGet(`https://zerodha.zero65.in/api/session?userId=${ userId }&timestamp=${ cookies.timestamp }`);
   console.log(cookies);
 
   let _cookie = (str, host) => {
