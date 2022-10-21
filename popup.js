@@ -6,7 +6,7 @@ var app = new Vue({
     }
   },
   mounted() {
-    chrome.storage.sync.get(['userIds'], (map) => this.userIds = map.userIds);
+    chrome.storage.sync.get(['userIds'], (map) => this.userIds = map.userIds || this.userIds);
   },
   methods: {
     login: (userId) => {
