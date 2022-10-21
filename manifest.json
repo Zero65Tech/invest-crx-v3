@@ -1,7 +1,7 @@
 {
-  "name": "Zerodha Trades",
-  "description": "Fetch trade history from Zerodha",
-  "version": "3.0.7",
+  "name": "Invest",
+  "description": "Chrome Extension for Zero65 Invest App",
+  "version": "3.0.8",
   "manifest_version": 2,
   "permissions": [
     "identity",
@@ -17,7 +17,7 @@
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net/npm/vue/dist/vue.js; object-src 'self'; connect-src 'self' https://zerodha.zero65.in/api/session;",
   "browser_action": {
-    "default_icon": "favicon-32x32.png",
+    "default_icon": "money-32.png",
     "default_popup": "popup.html"
   },
   "background": {
