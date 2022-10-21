@@ -1,0 +1,33 @@
+{
+  "name": "Zerodha Trades",
+  "description": "Fetch trade history from Zerodha",
+  "version": "3.0.7",
+  "manifest_version": 2,
+  "permissions": [
+    "identity",
+    "cookies",
+    "*://kite.zerodha.com//*",
+    "*://console.zerodha.com//*"
+  ],
+  "oauth2": {
+    "client_id": "220251834863-q57jp6r129n0k14tpv9s1pan3e82f01d.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net/npm/vue/dist/vue.js; object-src 'self'; connect-src 'self' https://zerodha.zero65.in/api/session;",
+  "browser_action": {
+    "default_icon": "favicon-32x32.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": [
+      "promisified.js",
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    { "matches": ["*://kite.zerodha.com/*"],    "js": ["content_kite.js"]    },
+    { "matches": ["*://console.zerodha.com/*"], "js": ["content_console.js"] }
+  ]
+}
