@@ -2,6 +2,9 @@ function psHttpGet(url) {
   return new Promise((resolve, reject) => {
 	  chrome.identity.getAuthToken({ 'interactive': true }, (token) => {
 
+      if(!token)
+        throw new Error('Failed to fetch auth token !');
+
 	    var xhttp = new XMLHttpRequest();
 	    xhttp.onreadystatechange = function() {
 

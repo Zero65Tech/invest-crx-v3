@@ -1,6 +1,6 @@
 const backend = 'https://zerodha.zero65.in/api';
 var userId = 'LV0248';
-var cookies = undefined;
+var cookies = { timestamp: 0 };
 
 
 
@@ -14,14 +14,14 @@ chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
     userId = data;
 
 
-  cookies = await psHttpGet(`${ backend }/session?userId=${ userId }&timestamp=${ data == 'login' ? cookies.timestamp : 0 }`);
+  cookies = await psHttpGet(`${ backend }/session?userId=${ userId }&timestamp=${ cookies.timestamp }`);
   console.log(cookies);
 
   let _cookie = (str, host) => {
     let details = {};
     str.split(';').forEach((kv, i) => {
       kv = kv.trim();
-      let [ key, value ] = kv.indexOf('=') == -1 ? [ kv, true ] : kv.split('=');
+      let [ key, value ] = kv.indexOf('=') == -1 ? [ kv, true ] : [ kv.substring(0, kv.indexOf('=')), kv.substring(kv.indexOf('=') + 1) ];
       if(i == 0) {
         details.name = key;
         details.value = value;
@@ -31,22 +31,25 @@ chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
         details.expirationDate = Math.ceil(new Date(value).getTime()/1000);
       else if(key == 'HttpOnly')
         details.httpOnly = value;
-      else if(key == 'SameSite')
+      else if(key == 'SameSite') {
+        if(value == 'None')
+          return;
         details.sameSite = value.toLowerCase();
-      else if(key == 'Secure')
+      } else if(key == 'Secure')
         details.secure = value;
       else if(key == 'Max-Age')
         return;
       else
         details[key] = value;
     });
+    return details;
   };
 
-  for(let str in cookies.kite)
-    await psSetCookie(_cookie(str, 'https://kite.zerodha.com'));
+  for(let c = 0; c < cookies.kite.length; c++)
+    await psSetCookie(_cookie(cookies.kite[c], 'https://kite.zerodha.com'));
 
-  for(let str in cookies.console)
-    await psSetCookie(_cookie(str, 'https://console.zerodha.com'));
+  for(let c = 0; c < cookies.console.length; c++)
+    await psSetCookie(_cookie(cookies.console[c], 'https://console.zerodha.com'));
 
 
   chrome.tabs.query({ url:'*://kite.zerodha.com/*' }, (tabs) => {
