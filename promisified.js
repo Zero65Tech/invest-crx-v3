@@ -25,7 +25,7 @@ function psHttpGet(url) {
 
 function psGetCookie(url, name) {
   return new Promise((resolve, reject) => {
-    chrome.cookies.get({url:url, name:name}, (cookie) => {
+    chrome.cookies.get({ url: url, name: name }, (cookie) => {
       resolve(cookie);
     });
   });
