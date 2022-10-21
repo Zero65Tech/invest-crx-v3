@@ -1,7 +1,7 @@
 {
   "name": "Invest",
   "description": "Chrome Extension for Zero65 Invest App",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "manifest_version": 2,
   "permissions": [
     "identity",
@@ -11,7 +11,7 @@
     "*://console.zerodha.com//*"
   ],
   "oauth2": {
-    "client_id": "220251834863-q57jp6r129n0k14tpv9s1pan3e82f01d.apps.googleusercontent.com",
+    "client_id": "220251834863-oruhpgvt7qd4sihht6f2n6a5d07losnp.apps.googleusercontent.com",
     "scopes": [
       "https://www.googleapis.com/auth/userinfo.email"
     ]
