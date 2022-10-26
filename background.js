@@ -5,6 +5,8 @@ var cookies = { timestamp: 0 };
 
 async function init() {
   let userIds = await psHttpGet(`https://invest.zero65.in/api/user/zerodha-ids`);
+  if(userId == 'DEMO')
+    userId = userIds[0];
   chrome.storage.sync.set({ 'userIds': userIds });
 }; init(); setInterval(init, 5 * 60 * 1000);
 
@@ -16,8 +18,10 @@ chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
   if((sender.origin != 'https://kite.zerodha.com' || data != 'login') && sender.id != 'bmimjjjamcpohjjfmdhneocpniahbapo')
     return;
 
-  if(data != 'login')
+  if(data != 'login') {
     userId = data;
+    cookies.timestamp = 0;
+  }
 
 
   cookies = await psHttpGet(`https://zerodha.zero65.in/api/session?userId=${ userId }&timestamp=${ cookies.timestamp }`);
@@ -43,6 +47,7 @@ chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
         details.sameSite = value.toLowerCase();
       } else if(key == 'Secure')
         details.secure = value;
+
       else if(key == 'Max-Age')
         return;
       else
