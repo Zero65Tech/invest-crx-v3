@@ -13,9 +13,7 @@ async function init() {
 chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
 
   console.log(sender.url, data);
-  if((sender.origin != 'https://kite.zerodha.com' || data != 'login')
-      && sender.id != 'bmimjjjamcpohjjfmdhneocpniahbapo'  // Web Store
-      && sender.id != 'pekfkmmpdkcdkbppoajoenpaopjcjnpe') // Local
+  if((sender.origin != 'https://kite.zerodha.com' || data != 'login') && sender.id != 'bmimjjjamcpohjjfmdhneocpniahbapo')
     return;
 
   if(data != 'login')
