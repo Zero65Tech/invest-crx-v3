@@ -1,8 +1,9 @@
 {
   "name": "Invest",
   "description": "Chrome Extension for Zero65 Invest App",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "manifest_version": 2,
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmHfzDcYMaI547mH+qvkeprjRchVHegnvvZpAcNPerBBg9TpOB4HAlyJSUheO+toNQocPZatS2B5LkLNhZymIyGyJnHpWaumMBM8N3FpQjmRMTAj4oYlMp/Y/eBVOBQ8FQ+BCkbzHjS4tpaWPKEoAkE1S9WfCoCUPxVp8BsV1hKms7Pqo+lghNH12UxGPgZP5RVpi82egBUIIaMsF/rRZm9Lz7PKaM+KjZRJiSnTDeOFsbpvhV0hRiIvHH9WKCXUTXvzFZoB/WourfVv/N40gcYHX5eoweELZvVzTg3L5/LcMQamgSHQNnPnF9AMYFnX/apUp9l1WOSqdmUqdbr4GWQIDAQAB",
   "permissions": [
     "identity",
     "cookies",

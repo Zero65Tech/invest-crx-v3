@@ -2,10 +2,13 @@ var userId = 'DEMO';
 var cookies = { timestamp: 0 };
 
 
-(async () => {
+
+async function init() {
   let userIds = await psHttpGet(`https://invest.zero65.in/api/user/zerodha-ids`);
   chrome.storage.sync.set({ 'userIds': userIds });
-})();
+}; init(); setInterval(init, 5 * 60 * 1000);
+
+
 
 chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
 
