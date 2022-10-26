@@ -1,4 +1,4 @@
-var userId = 'LV0248';
+var userId = 'DEMO';
 var cookies = { timestamp: 0 };
 
 
@@ -10,7 +10,9 @@ var cookies = { timestamp: 0 };
 chrome.runtime.onMessage.addListener(async (data, sender, callback) => {
 
   console.log(sender.url, data);
-  if((sender.origin != 'https://kite.zerodha.com' || data != 'login') && sender.id != 'pekfkmmpdkcdkbppoajoenpaopjcjnpe')
+  if((sender.origin != 'https://kite.zerodha.com' || data != 'login')
+      && sender.id != 'bmimjjjamcpohjjfmdhneocpniahbapo'  // Web Store
+      && sender.id != 'pekfkmmpdkcdkbppoajoenpaopjcjnpe') // Local
     return;
 
   if(data != 'login')
